@@ -1,16 +1,69 @@
 <?php snippet('header') ?>
 
-  <main class="main" role="main">
+	<main class="main" role="main">
 
-    <div class="text">
-      <h1><?php echo $page->title()->html() ?></h1>
-      <?php echo $page->text()->kirbytext() ?>
-    </div>
+		<div am-Grid="full">
+			<div am-Row="fluid">
+				<div am-Col="16">
+					<h1>H1</h1>
+					<h4>h4</h4>
+				</div>
+			</div>
+		</div>
 
-    <hr>
+		<div am-Grid="full">
+			<div am-Row="fluid">
+				<div am-Col="16">
+					<h4>H4</h4>
+					<p>Paragraph</p>
+					<p>Paragraph</p>
+				</div>
+			</div>
+			<div am-Row="fluid">
+				<div am-Col="12">
+					<h4>H6</h4>
+					<p>Paragraph</p>
+				</div>
+				<div am-Col="4">
+					<h4>H6</h4>
+					<p>Paragraph</p>
+				</div>
+			</div>
+		</div>
 
-    <?php snippet('projects') ?>
+		<div am-Grid="full">
+			<div am-Row="4col">
+				<div am-Col>
+					<h4>H6</h4>
+					<p>Paragraph</p>
+				</div>
+				<div am-Col>
+					<h4>H6</h4>
+					<p>Paragraph</p>
+				</div>
+				<div am-Col>
+					<h4>H6</h4>
+					<p>Paragraph</p>
+				</div>
+				<div am-Col>
+					<h4>H6</h4>
+					<p>Paragraph</p>
+				</div>
+			</div>
+			<div am-Row="fluid">
+				<div am-Col="10">
+					<h4>H6</h4>
+					<p>Paragraph</p>
+				</div>
+				<div am-Col="6">
+					<h4>H6</h4>
+					<p>Paragraph</p>
+				</div>
+			</div>
+		</div>
 
-  </main>
+
+
+	</main>
 
 <?php snippet('footer') ?>
