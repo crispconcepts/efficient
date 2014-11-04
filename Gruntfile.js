@@ -3,32 +3,42 @@ module.exports = function (grunt) {
     // Watch task config
     watch: {
       sass: {
-        files: "assets/styles/scss/*.scss",
+        files: ['assets/styles/scss/**/*.scss'],
         tasks: ['sass']
       }
     },
     // SASS task config
     sass: {
         dev: {
-            files: {
-                "assets/styles/css/styles.css" : "assets/styles/scss/styles.scss"
-            }
+            options: {
+              style: 'compressed',
+              update: true,
+              noCache: true
+            },
+            files: [
+                {
+                    expand: true,
+                    cwd: "assets/styles/scss",
+                    src: ["**/*.scss"],
+                    dest: "assets/styles/css",
+                    ext: ".css"
+                }
+            ]
         }
     },
 
-	browserSync: {
-	  default_options: {
-	    bsFiles: {
-	      src: [
-	        "assets/styles/css/style.css"
-	      ]
-	    },
-	    options: {
-	      watchTask: true,
-	      proxy: "snap3.local"
-	    }
-	  }
-	},
+    // Browser Sync config
+    browserSync: {
+        dev: {
+            bsFiles: {
+                src : 'assets/styles/css/**/*.css'
+            },
+            options: {
+                watchTask: true,
+                proxy: "snap3.local"
+            }
+        }
+    }
 
 
   });
