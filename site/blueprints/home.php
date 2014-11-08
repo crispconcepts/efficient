@@ -3,9 +3,10 @@
 title: Home
 pages:
   template:
+    - _section
     - _submenu
     - _hero
-    - _section
+    - _slideshow
 fields:
   title:
     label: Title

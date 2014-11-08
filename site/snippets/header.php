@@ -2,18 +2,30 @@
 <html lang="en">
 <head>
 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-  <title><?php echo $site->title()->html() ?> | <?php echo $page->title()->html() ?></title>
-  <meta name="description" content="<?php echo $site->description()->html() ?>">
-  <meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
+	<title><?php echo $site->title()->html() ?> | <?php echo $page->title()->html() ?></title>
+	<meta name="description" content="<?php echo $site->description()->html() ?>">
+	<meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
 
-  <?php echo css('assets/styles/css/styles.css') ?>
-
+	<?
+	echo css(
+		array(
+			'/assets/styles/css/styles.css'
+		)
+	)
+	?>
 </head>
 <body>
 
-  <header class="header cf" role="banner">
-
-  </header>
+<header am-Grid="table" class="header cf" role="banner">
+	<div am-Row="fluid">
+		<div am-Col="6 bottom" id="branding">
+			<h1><a href="/home"><? echo $site->title() ?></a></h1>
+		</div>
+		<div am-Col="10 bottom" id="navigation">
+			<? snippet('menu'); ?>
+		</div>
+	</div>
+</header>

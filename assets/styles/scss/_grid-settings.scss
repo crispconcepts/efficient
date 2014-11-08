@@ -1,0 +1,9 @@
+/**
+ * Settings
+ */
+
+// Columns
+$grid-columns: 16;
+// Breakpoints
+$tablet: new-breakpoint(max-width 768px 16);
+$mobile: new-breakpoint(max-width 480px 16);

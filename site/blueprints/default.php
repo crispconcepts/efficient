@@ -3,9 +3,10 @@
 title: Page
 pages:
   template:
+    - _section
     - _submenu
     - _hero
-    - _section
+    - _slideshow
 files: true
 fields:
   title:

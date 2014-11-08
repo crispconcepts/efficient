@@ -1,0 +1,37 @@
+html 		{font-size:16px; font-family: $helvetica;}
+a 			{color:inherit; text-decoration:none; border-bottom:1px dotted;}
+a:hover		{border-bottom:1px solid;}
+h1			{font-size:3.000em; line-height:1.125em; margin-top:20px;}
+h2			{font-size:2.250em; line-height:1.125em; margin-top:20px;}
+h3			{font-size:1.875em; line-height:1.125em; margin-top:20px;}
+h4			{font-size:1.500em; line-height:1.250em; margin-top:20px;}
+h5			{font-size:1.250em; line-height:1.400em; margin-top:20px;}
+h6			{font-size:1.000em; line-height:1.500em; margin-top:20px;}
+p			{font-size:1.000em; line-height:1.500em; margin-top:20px;}
+p > a		{color:#018ad0; text-decoration:none; border-bottom:1px dotted;}
+p > a:hover {color:#006598; border-bottom:1px solid;}
+
+p + p	{margin-top:1em;}
+
+h1 + *,
+h2 + *,
+h3 + *,
+h4 + *,
+h5 + *,
+h6 + *	{margin-top:0;}
+
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p	{margin-top:20px;}
+
+.hero {
+	h1 + p,
+	h2 + p,
+	h3 + p,
+	h4 + p,
+	h5 + p,
+	h6 + p	{margin-top:0;}
+}

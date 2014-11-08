@@ -1,17 +1,29 @@
-Title: Kirby Starterkit
+Title: Efficient Starterkit
 
 ----
 
-Author: Bastian Allgeier GmbH
+Copyright: © (date: Year) (link: http://crispconcepts.net text: Crisp Concepts)
 
 ----
 
-Description: This is Kirby's Starterkit.
+Slogan: 
 
 ----
 
-Keywords: Kirby, CMS, file-based
+Phone: 
 
 ----
 
-Copyright: © 2009-(date: Year) (link: http://getkirby.com text: Kirby)
+Email: 
+
+----
+
+Meta-author: 
+
+----
+
+Meta-description: 
+
+----
+
+Meta-keywords: 
