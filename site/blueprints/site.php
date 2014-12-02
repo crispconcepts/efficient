@@ -3,7 +3,7 @@
 title: Site
 pages:
   template:
-    - _section
+    - default
 fields:
   title:
     label: Title

@@ -3,9 +3,8 @@
 title: Section (Grid)
 pages:
   template:
-    - _section_row
     - _section_column
-files: false
+files: true
 fields:
   title:
     label: Title
@@ -14,7 +13,11 @@ fields:
     label: Span
     type:  select
     options:
-      normal: Normal
-      full:   Full Width
-      table:  Table
+      normal:     Normal
+      normal full: Normal (Full Width)
+      table:      Table
+      table full:  Table (Full Width)
     default: normal
+  background:
+    label: Background Image
+    type:  text

@@ -12,20 +12,29 @@
 	<?
 	echo css(
 		array(
-			'/assets/styles/css/styles.css'
+			'/assets/styles/css/styles.css',
+			'/panel/assets/css/fontawesome.css'
 		)
 	)
 	?>
 </head>
 <body>
 
-<header am-Grid="table" class="header cf" role="banner">
-	<div am-Row="fluid">
-		<div am-Col="6 bottom" id="branding">
-			<h1><a href="/home"><? echo $site->title() ?></a></h1>
-		</div>
-		<div am-Col="10 bottom" id="navigation">
-			<? snippet('menu'); ?>
+<header am-Grid="normal" class="header cf" role="banner">
+	<div am-Row>
+		<div am-Col="16 panel white">
+			<div class="content">
+				<div am-Col="6 middle left nested" id="branding">
+					<div class="content">
+						<h1><a href="/home"><? echo $site->title() ?></a></h1>
+					</div>
+				</div>
+				<div am-Col="10 middle right nested" id="navigation">
+					<div class="content">
+						<? snippet('menu'); ?>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </header>

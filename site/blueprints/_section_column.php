@@ -3,15 +3,21 @@
 title: Section (column)
 pages:
   template:
-    - _section
+    - _section_column
 files: true
 fields:
   title:
     label: Title
     type:  text
+  copy:
+    label: Content
+    type:  textarea
+  line-a:
+    type: line
   span:
     label: Span
     type:  select
+    icon:  columns
     options:
       1:  One
       2:  Two
@@ -30,18 +36,50 @@ fields:
       15: Fifteen
       16: Sixteen
       auto: Auto / Fluid
-      full: Full Width (requires full width grid)
     default: 16
-  copy:
-    label: Content
-    type:  textarea
-  line-a:
-    type: line
-  valign:
-    label: Vertical Align (for Table Grid only)
+  halign:
+    label: Horizontal Align
     type:  select
+    icon:  arrows-h
+    width: 1/2
+    options:
+      left:   Left
+      center: Center
+      right:  Right
+  valign:
+    label: Vertical Align (only works with table grids)
+    type:  select
+    icon:  arrows-v
+    width: 1/2
     options:
       top:    Top
       middle: Middle
       bottom: Bottom
-    default: top
+  line-b:
+    type: line
+  background:
+    label: Background Image
+    type:  text
+    icon:  image
+  panel:
+    label: Panel
+    type:  toggle
+    text: on/off
+    default: false
+  panelcolor:
+    label: Panel Color
+    type:  select
+    width: 1/2
+    icon:  eyedropper
+    options:
+      white:     White
+      lightgray: Light Gray
+      gray:      Gray
+      darkgray:  Dark Gray
+      black:     Black
+    default: white
+  panelcolorcustom:
+    icon:  paint-brush
+    label: Panel Custom Color (Overrides Panel Color)
+    type:  text
+    width: 1/2

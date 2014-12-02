@@ -1,152 +1,83 @@
 <?
-echo '<div am-Grid="' . $content->span() . '" class="cf">' . "\n";
-foreach($content->children()->visible() as $row):
-
-	// Column Driven
-	if($row->span() == "auto"):
-
-		$spanCount = 0;
-		echo '<div am-Row="fluid" class="cf">' . "\n";
-
-		foreach($row->children()->visible() as $col):
-			$currentSpan = html($col->span());
-			if(($spanCount+(int)$currentSpan) <= 16):
-				$spanCount = $spanCount + (int)$currentSpan;
-				echo '<div am-Col="' . $currentSpan . '">' . "\n";
-				echo kirbytext($col->copy()) . "\n";
-				// Nested Grid
-				foreach($col->children()->visible() as $grid):
-					if($grid->span() == 'table'): $span = 'table nested'; else: $span = 'nested'; endif;
-					echo '<div am-Grid="' . $span . '">' . "\n";
-					foreach($grid->children()->visible() as $row):
-
-						// Nested - Column Driven
-						if($row->span() == "auto"):
-							$spanCountNest = 0;
-							echo '<div am-Row="fluid" class="cf">' . "\n";
-							foreach($row->children()->visible() as $col):
-								$currentSpanNest = html($col->span());
-								if(($spanCountNest+(int)$currentSpanNest) <= 16):
-									$spanCountNest = $spanCountNest + (int)$currentSpanNest;
-									echo '<div am-Col="' . $currentSpanNest . '">' . "\n";
-									echo kirbytext($col->copy()) . "\n";
-									echo '</div>' . "\n";
-								else:
-									$spanCountNest = 0 + (int)$currentSpanNest;
-									echo '</div>' . "\n";
-									echo '<div am-Row="fluid" class="cf">' . "\n";
-									echo '<div am-Col="' . $currentSpanNest . '">' . "\n";
-									echo kirbytext($col->copy()) . "\n";
-									echo '</div>' . "\n";
-								endif;
-							endforeach;
- 						// Nested - Row Driven
-						else:
-							echo '<div am-Row="' . $row->span() . 'col">' . "\n";
-							foreach($row->children()->visible() as $col):
-								if($grid->span() == 'table'): $valign = $col->valign(); else: $valign = null; endif;
-								echo '<div am-Col="' . $valign .'">' . "\n";
-								echo kirbytext($col->copy()) . "\n";
-								echo '</div>' . "\n";												// [am-Grid="nested"] [am-Row] [am-Col]
-							endforeach;
-						endif;
-
-					endforeach;
-					echo '</div>' . "\n";												// [am-Grid="nested"]
-				endforeach;
-				// End Nested Grid
-
-				echo '</div>' . "\n";													// [am-Col]
-			else:
-				$spanCount = 0 + (int)$currentSpan;
-				echo '</div>' . "\n";
-				echo '<div am-Row="fluid" class="cf">' . "\n";
-				echo '<div am-Col="' . $currentSpan . '">' . "\n";
-				echo kirbytext($col->copy()) . "\n";
-
-				// Nested Grid
-				// Nested Grid
-				foreach($col->children()->visible() as $grid):
-					if($grid->span() == 'table'): $span = 'table nested'; else: $span = 'nested'; endif;
-					echo '<div am-Grid="' . $span . '">' . "\n";
-					foreach($grid->children()->visible() as $row):
-
-						// Nested - Column Driven
-						if($row->span() == "auto"):
-							$spanCountNest = 0;
-							echo '<div am-Row="fluid" class="cf">' . "\n";
-							foreach($row->children()->visible() as $col):
-								$currentSpanNest = html($col->span());
-								if(($spanCountNest+(int)$currentSpanNest) <= 16):
-									$spanCountNest = $spanCountNest + (int)$currentSpanNest;
-									echo '<div am-Col="' . $currentSpanNest . '">' . "\n";
-									echo kirbytext($col->copy()) . "\n";
-									echo '</div>' . "\n";
-								else:
-									$spanCountNest = 0 + (int)$currentSpanNest;
-									echo '</div>' . "\n";
-									echo '<div am-Row="fluid" class="cf">' . "\n";
-									echo '<div am-Col="' . $currentSpanNest . '">' . "\n";
-									echo kirbytext($col->copy()) . "\n";
-									echo '</div>' . "\n";
-								endif;
-							endforeach;
- 						// Nested - Row Driven
-						else:
-							echo '<div am-Row="' . $row->span() . 'col">' . "\n";
-							foreach($row->children()->visible() as $col):
-								if($grid->span() == 'table'): $valign = $col->valign(); else: $valign = null; endif;
-								echo '<div am-Col="' . $valign .'">' . "\n";
-								echo kirbytext($col->copy()) . "\n";
-								echo '</div>' . "\n";												// [am-Grid="nested"] [am-Row] [am-Col]
-							endforeach;
-						endif;
-
-					endforeach;
-					echo '</div>' . "\n";												// [am-Grid="nested"]
-				endforeach;
-				// End Nested Grid
-
-				echo '</div>' . "\n";													// [am-Col]
-			endif;
-		endforeach;
-
-		echo '</div>' . "\n";															// [am-Row="fluid"]
-	echo '</div>' . "\n";
-
-
-	// Row Driven
-	else:
-
-		echo '<div am-Row="' . $row->span() . 'col">' . "\n";
-		foreach($row->children()->visible() as $col):
-			if($content->span() == 'table'): $valign = $col->valign(); else: $valign = null; endif;
-			echo '<div am-Col="' . $valign .'">' . "\n";
-			echo kirbytext($col->copy()) . "\n";
-
-			// Nested Grid
-			foreach($col->children()->visible() as $grid):
-				if($grid->span() == 'table'): $span = 'table nested'; else: $span = 'nested'; endif;
-				echo '<div am-Grid="' . $span . '">' . "\n";
-				foreach($grid->children()->visible() as $row):
-					echo '<div am-Row="' . $row->span() . 'col">' . "\n";
-					foreach($row->children()->visible() as $col):
-						if($grid->span() == 'table'): $valign = $col->valign(); else: $valign = null; endif;
-						echo '<div am-Col="' . $valign .'">' . "\n";
-						echo kirbytext($col->copy()) . "\n";
-						echo '</div>' . "\n";												// [am-Grid="nested"] [am-Row] [am-Col]
-					endforeach;
-					echo '</div>' . "\n";													// [am-Grid="nested"] [am-Row]
-				endforeach;
-				echo '</div>' . "\n";														// [am-Grid="nested"]
-			endforeach;
-
-			echo '</div>' . "\n";															// [am-Grid] [am-Row] [am-Col]
-		endforeach;
-		echo '</div>' . "\n";																// [am-Grid] [am-Row]
-
-	endif;
-
-endforeach;
-echo '</div>' . "\n";																	// [am-Grid]
+if($content->background() && $content->background() != ''):
+	$gridBgImg = $content->background();
+	$gridBgUrl = $content->files()->find("$gridBgImg")->url();
+endif;
 ?>
+
+<div am-Grid="<? echo $content->span(); ?>" class="cf" <? e($gridBgImg,'style="background-image:url('.$gridBgUrl.'); background-size:cover; background-repeat:no-repeat; background-position:center center;"') ?> >
+	<div am-Row>
+
+<?
+$spanCount = 0;
+foreach($content->children()->visible() as $col):
+	$colBgImg = '';
+	$colBgUrl = '';
+	if($col->background() && $col->background() != ''):
+		$colBgImg = $col->background();
+		$colBgUrl = $col->files()->find("$colBgImg")->url();
+	endif;
+	$span = h($col->span());
+	if($spanCount+$span > 16):
+		$spanCount = 0;
+		$spanCount = $spanCount+$span;
+?>
+
+	</div>
+	<div am-Row>
+		<div id="<? echo $col->slug() ?>" am-Col="<? e($col->span(),h($col->span())) ?> <? e($col->span(),h($col->halign())) ?> <? e($col->span(),h($col->valign())) ?> <? e($col->panel()=='true', 'panel ' . h($col->panelcolor())) ?>" <? e($colBgImg && $col->panel()!='true','style="background-image:url('.$colBgUrl.'); background-size:cover; background-repeat:no-repeat; background-position:center center;"') ?> >
+		<? e($col->panelcolorcustom()!='', '<style>#' . $col->slug() . ':after {background-color:' . $col->panelcolorcustom() . '!important;}</style>') ?>
+			<div class="content">
+				<? echo kirbytext($col->copy()) ?>
+				<?
+				foreach($col->children()->visible() as $colNest):
+					$colNestBgImg = '';
+					$colNestBgUrl = '';
+					if($colNest->background() && $colNest->background() != ''):
+						$colNestBgImg = $colNest->background();
+						$colNestBgUrl = $colNest->files()->find("$colNestBgImg")->url();
+					endif;
+				?>
+					<div am-Col="<? e($colNest->span(),h($colNest->span())) ?> <? e($colNest->halign(),h($colNest->halign())) ?> <? e($colNest->valign(),h($colNest->valign())) ?> <? e($colNest->panel()=='true', 'panel ' . h($colNest->panelcolor())) ?> nested"<? e($colNestBgImg && $colNest->panel()!='true','style="background-image:url('.$colNestBgUrl.'); background-size:cover; background-repeat:no-repeat; background-position:center center;"') ?> >
+						<div class="content nested">
+							<? echo kirbytext($colNest->copy()) ?>
+						</div>
+					</div>
+				<? endforeach; ?>
+			</div>
+		</div>
+
+<?
+	else:
+		$spanCount = $spanCount+$span;
+?>
+
+		<div id="<? echo $col->slug() ?>" am-Col="<? e($col->span(),h($col->span())) ?> <? e($col->span(),h($col->halign())) ?> <? e($col->span(),h($col->valign())) ?> <? e($col->panel()=='true', 'panel ' . h($col->panelcolor())) ?>" <? e($colBgImg && $col->panel()!='true','style="background-image:url('.$colBgUrl.'); background-size:cover; background-repeat:no-repeat; background-position:center center;"') ?> >
+		<? e($col->panelcolorcustom()!='', '<style>#' . $col->slug() . ':after {background-color:' . $col->panelcolorcustom() . '!important;}</style>') ?>
+			<div class="content">
+				<? echo kirbytext($col->copy()) ?>
+				<?
+				foreach($col->children()->visible() as $colNest):
+					$colNestBgImg = '';
+					$colNestBgUrl = '';
+					if($colNest->background() && $colNest->background() != ''):
+						$colNestBgImg = $colNest->background();
+						$colNestBgUrl = $colNest->files()->find("$colNestBgImg")->url();
+					endif;
+				?>
+					<div am-Col="<? e($colNest->span(),h($colNest->span())) ?> <? e($colNest->halign(),h($colNest->halign())) ?> <? e($colNest->valign(),h($colNest->valign())) ?> <? e($colNest->panel()=='true', 'panel ' . h($colNest->panelcolor())) ?> nested"<? e($colNestBgImg && $colNest->panel()!='true','style="background-image:url('.$colNestBgUrl.'); background-size:cover; background-repeat:no-repeat; background-position:center center;"') ?> >
+						<div class="content nested">
+							<? echo kirbytext($colNest->copy()) ?>
+						</div>
+					</div>
+				<? endforeach; ?>
+			</div>
+		</div>
+
+<?
+	endif;
+endforeach;
+?>
+
+	</div>
+</div>
